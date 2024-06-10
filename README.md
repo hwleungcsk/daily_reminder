@@ -4,8 +4,8 @@
 
 ## Introduction
 
-Lots of daily stuff to do. Taking supplement pills, checking website updates ... etc.
-Sometimes can't remember if already took pill today. So I develop this small tool.
+Lots of daily stuff to do. Taking supplement pills, checking website updates, daily mission of game ... etc.
+Sometimes can't remember if already took pill or finished daily mission of game today. So I develop this small tool to help myself.
 
 ## Installation
 
@@ -17,7 +17,7 @@ PHP [Fat-free](https://fatfreeframework.com) Framework is used. After installing
 ## How to Use
 
 Instead of DB, JSON ... etc, file date is used in this project.
-Just Click on the Toggle button to update file date.
+Just click on the toggle button to update file date.
 You can use the calendar on the right to modify the date manually.
 
 ## Screenshot
