@@ -1,0 +1,74 @@
+<title>Daily Reminder</title>
+<link rel="stylesheet" href="lib/css.css">
+<!-- mvp.css from cdn -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mvp.css">
+<!-- custom css -->
+<link rel="stylesheet" href="lib/toast.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- font awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- favicon -->
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+<!-- body on load toast hello -->
+<check if="{{ @msg != '' }}">
+    <true>
+        <body onload="toastMsg('{{ @msg }}')">
+    </true>
+    <false>
+        <body>
+    </false>
+</check>
+
+<!-- snackbar toast -->
+<div id="snackbar" class="toast" style="display: none; animation: fadein 0.5s, fadeout 0.5s 1.5s;"></div>
+
+<table>
+    <repeat group="{{ @files }}" value="{{ @file }}" key="{{ @key }}">
+        <tr>
+            <td>{{ @file }}</td>
+            <td>{{ @dates[@key] }}</td>
+            <check if = "{{ @switch[@key] }}">
+                <true>
+                    <!-- toggle switch on -->
+                    <td><label class="switch">
+                        <!-- on click go to "./@file/toggle"-->
+                        <input type="checkbox" checked disabled onclick="window.location.href='./{{ @file }}/toggle'">
+                        <span class="slider round"></span>
+                    </label></td>
+                </true>
+                <false>
+                    <!-- toggle switch off -->
+                    <td><label class="switch">
+                        <input type="checkbox"  onclick="window.location.href='./{{ @file }}/toggle'">
+                        <span class="slider round"></span>
+                    </label></td>
+                </false>
+            </check>
+            <!-- date picker to change date -->
+             <!-- show only icon, no text -->
+            <td>
+                <input type="date" id="date" name="date" value="{{ date('Y-m-d') }}" onchange="window.location.href='./{{ @file }}/date/'+this.value">
+            </td>
+            <!-- rubbish bin icon to delete -->
+            <td><a href="./{{ @file }}/delete" class="button button-clear">🗑️</a></td>
+        </tr>
+    </repeat>
+</table>
+<p>
+<!-- form to add new reminder -->
+<form action="./" method="post">
+    <!-- single line input and button -->
+    <input type="text" name="file" placeholder="New Reminder" style="width: 300px;">
+    <button type="submit">Add</button>
+</form>
+            
+  
+<script>
+    function toastMsg(msg) {
+        var x = document.getElementById("snackbar");
+        x.innerHTML = msg;
+        x.style.display = "block";
+        setTimeout(function(){ x.style.display = "none"; }, 2000);
+    }
+</script>
