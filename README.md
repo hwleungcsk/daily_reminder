@@ -18,4 +18,4 @@ PHP [https://fatfreeframework.com](Fat-Free) Framework is used. After installing
 
 ## Screenshot
 
-![Screenshot](Screen.png)
+![Screenshot](Screenshot.png)
